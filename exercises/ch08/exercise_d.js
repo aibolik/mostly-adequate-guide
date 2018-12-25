@@ -11,9 +11,21 @@
 // function to signup and welcome a user when the validation is ok.
 //
 // Remember either's two arguments must return the same type.
-
 // validateName :: User -> Either String ()
-const validateName = undefined;
+const validateName = ((user) => {
+  return user.name.length > 3
+      ? Either.of(user)
+      : left(`User's name is too short`);
+});
+
+const welcome = str => new IO(() => str)
 
 // register :: User -> IO String
-const register = compose(undefined, validateUser(validateName));
+const register = compose(
+  either(welcome, map(showWelcome)),
+  map(save),
+  validateUser(validateName)
+);
+
+
+
