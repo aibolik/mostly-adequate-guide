@@ -6,7 +6,8 @@
 //   intercalate :: String -> [String] -> String
 
 // strToList :: String -> [Char]
-const strToList = undefined;
+// strToList :: String -> [Char]
+const strToList = compose(split(''));
 
 // listToStr :: [Char] -> String
-const listToStr = undefined;
+const listToStr = compose(intercalate(''));
